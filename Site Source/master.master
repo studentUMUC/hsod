@@ -1,0 +1,83 @@
+﻿<%@ Master Language="VB" CodeFile="master.master.vb" Inherits="master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    
+    <meta http-equiv="x-ua-compatible" content="IE=9" >
+    <link rel="stylesheet" href="styles/blueprint/screen.css" type="text/css" />
+
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="styles/blueprint/ie.css" type="text/css"  />
+<![endif]-->
+
+<link rel="stylesheet" href="styles/start/jquery-ui-1.8.9.custom.css" type="text/css" />
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var pageLinks = new Array(3);
+        
+        function getCurrentPageIndex() {
+            // get current page by looping through
+            var pageIndex = 0;
+            var currentPage = window.location.href; // REALLY SHOULD BE CASE INDEPENDANT
+            var links = $(".menuLink");
+            for (x = 0; x < 3; x++) {
+                var test = links[x].href;
+                if (test == currentPage)
+                    pageIndex = x;
+                pageLinks[x] = test;
+                links[x].href = "#tabs1";
+            }
+            return pageIndex;
+        }
+
+        $(function () {
+            var pageIndex = getCurrentPageIndex();
+
+            $("#divMenu").tabs({
+                select: function (event, ui) {
+                    var index = ui.index;
+                    window.location = pageLinks[index];
+                    return false;
+                },
+                selected: pageIndex
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="divMaster" class="container">
+        <div id="divHeader">
+            <h1>High School Swim On Deck</h1>
+            <h2><asp:Literal ID="litHeader" runat="server"></asp:Literal></h2>
+        </div> 
+        <div id="divContent" class="span-18 prepend-3 last">
+        <div id="divMenu">
+            <ul>
+                <li>
+                    <a class="menuLink" href="Profile.aspx">User Profile</a>
+                </li>
+                <li>
+                    <a class="menuLink" href="Goals.aspx">User Goals & Performance</a>
+                </li>
+                <li>
+                    <a class="menuLink" href="Results.aspx">Result History</a>
+                </li>
+                
+            </ul>
+            <div id="tab1" style="padding-top: 5px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></div></div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿body 
+{
+    background-color:Gray;
+}
+
+h1,h2
+{
+    margin: 3px;
+    text-align:center;   
+}
+
+#divMaster
+{
+      
+    background-color: White;
+    border: 1px solid black;
+    
+}
+
+#divContent
+{
+    
+}
+
+.profileEdit
+{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eTable
+{
+    border: solid 1px Black;
+    border-collapse:collapse;
+    background-color:silver;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eTable td
+{
+    text-align:center;
+}
+
+.eTable td.group
+{
+    text-align:left;
+    font-weight:bold;
+    font-size: 1.2em;
+    text-indent: 10px;
+    text-transform:uppercase;
+    border: 1px solid black;
+}
+
+.eTable td.group:hover
+{
+    cursor: pointer;
+}
+
+.hidden
+{
+    display:none;
+}
+
+.timeAdd
+{
+    font-weight:bold;
+    font-size: 1.2em;
+}
+
+.aCenter
+{
+    text-align:center;
+}
