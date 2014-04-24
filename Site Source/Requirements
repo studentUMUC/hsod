@@ -19,8 +19,8 @@ Stroke	Free Style (FS), Butterfly Stroke (BF), Breast Stroke (BRS), Back Stroke 
 Distance	Distance of events swimmers will participate in at competitions will be described in Yards. The yards for swim meets and events will be 25, 50, 100 or 200 only. 
 Time	Times for goals and events will be recorded in the system by Minutes, seconds and 1/one hundredth of a second in the format of MM:SS.00
 
-Requirements
--------------
+**Requirements**
+
 
 The requirements for this software application are listed in logical sequence according to the methods and execution of the HSoD website. The table includes both functional and nonfunctional requirements. 
 
@@ -34,11 +34,11 @@ Req. #	Description
 7	      This system shall define a swim event result as the user’s time for completing a swim event on a specific date
 8	      This system shall allow users to input event results from swim competitions
 9	      This system shall require the user to enter event goal times and swim event result times in the format: 00:00.00   (MM:SS.00)  {or whatever the proper designation for tenths and hundredths of seconds is…}
-10	    This system shall display the user’s event goal times along with the user’s personal best time (calculated as the lowest event result time) for each available event
-11	    This system shall display the user’s history of event result times for each event along with their age at the time of the event (calculated using the user’s date of birth)
-19	    This system shall Not allow access by unauthenticated users
-20	    This system shall Not allow users to enter swim event results unless they have entered a Date of Birth 
-21	    This system shall Not allow users to enter swim event results if the user is past the age of 18 on the date of the competition (calculated using the user’s date of birth)
+10	     This system shall display the user’s event goal times along with the user’s personal best time (calculated as the lowest event result time) for each available event
+11	     This system shall display the user’s history of event result times for each event along with their age at the time of the event (calculated using the user’s date of birth)
+19	     This system shall Not allow access by unauthenticated users
+20	     This system shall Not allow users to enter swim event results unless they have entered a Date of Birth 
+21	     This system shall Not allow users to enter swim event results if the user is past the age of 18 on the date of the competition (calculated using the user’s date of birth)
 
 
 
@@ -47,13 +47,10 @@ Req. #	Description
 
 
 
-4. Problem Statement
+**Problem Statement**
 
 Create a website which allows High School Students who are on the Swim Team to login to the software, enter goals for competition events and enter results of those events when the swimmer competes in a high school swim meet. The software will be called High School swimmer on Deck or HSoD
-
 The student will start by utilizing a windows based platform (versio IE 7 or above, FireFox, or Google Chrome) with a basic internet connection allowing the students to navigate to the software website. When the student visits the HSoD website the options will be to or to login with Swimmer’s userId and password previously created, or to create a new user for the site. 
-
 When the swimmer registers for the site, they will create a unique login ID and enter required information to properly identify the swimmer within the system. This information will create a basic swimmer profile. 
-
 Once the user completes the required registration information for HSoD the system will generate a confirmation email. Once the profile is confirmed the user profile, the user will be able to enter the site, edit their profile, update password, enter goals, enter event results from competitions, and pull various database queries. 
 
