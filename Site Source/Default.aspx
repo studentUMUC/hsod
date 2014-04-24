@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>High School On Deck</title>
+    <title>High School Swimmers On Deck</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -18,7 +18,9 @@
 
             
         </AnonymousTemplate>
-        <LoggedInTemplate><h1>Logged in</h1>
+        <LoggedInTemplate>
+            <h2>You are currently logged into the system.  Please use the link below to go to the main page.</h2>
+            <a href="~/Profile.aspx">Go to profile page</a>
         
         </LoggedInTemplate>
         </asp:LoginView>
@@ -27,7 +29,7 @@
                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                     </asp:CreateUserWizardStep>
                     <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server"><ContentTemplate>
-                    Congrats !  Yo account wuz created!<br />
+                    Congratulations!  Your account was successfully created!<br />
                         <asp:Button ID="Button1" runat="server" Text="Continue" PostBackUrl="~/Profile.aspx" />
                     </ContentTemplate>
                     </asp:CompleteWizardStep>
