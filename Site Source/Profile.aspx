@@ -10,13 +10,18 @@
                 dateFormat: 'mm/dd/yy',
                 minDate: '-20y'  
             });
+            
+            
         });
         
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="notice">This page lets you update your profile information.<br />
-    Enter your information and click on the "update" link to save your information.
+    <div id="divInstructionBlurb" class="notice">This page lets you update your profile information.<br />
+    Enter your information and click on the "update" link to save your information.  <a id="aMoreInfo" href="#">click for more info</a>
+    </div>
+    <div id="divInstructionDetails">
+    
     </div>
     <asp:FormView ID="fvProfile" CssClass="profileEdit" runat="server" CellPadding="4" 
         DataKeyNames="userName" DataSourceID="sdsProfile" DefaultMode="Edit" 

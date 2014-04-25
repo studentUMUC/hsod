@@ -30,7 +30,10 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="notice">Instructions go here
+    <div id="divInstructionBlurb" class="notice">Instruction summary goes here  <a id="aMoreInfo" href="#">click for more info</a>
+    </div>
+    <div id="divInstructionDetails">
+    
     </div>
     <asp:Panel ID="panFiltered" CssClass="error aCenter" Visible="false" runat="server">
     <h4>THESE RESULTS ARE FILTERED FOR A SPECIFIC STROKE AND DISTANCE!!!</h4>To remove this filter and view your full history of results:

@@ -106,7 +106,10 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="notice">Instructions go here
+    <div id="divInstructionBlurb" class="notice">Instruction summary goes here  <a id="aMoreInfo" href="#">click for more info</a>
+    </div>
+    <div id="divInstructionDetails">
+    
     </div>
     <input id="btnAddResult" type="button" class="button" value="Add New Event Result" />
     <asp:Repeater ID="rptGoals" runat="server" DataSourceID="sdsGoals">
