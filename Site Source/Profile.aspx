@@ -53,6 +53,15 @@
             DOB:
             <asp:TextBox ID="DOBTextBox" CssClass="datePicker" runat="server" Text='<%# Bind("DOB") %>' />
             <br />
+            State: 
+            <asp:DropDownList ID="ddlStates" runat="server" DataSourceID="sdsStates" 
+                DataTextField="stateName" DataValueField="stateCode" 
+                SelectedValue='<%# Bind("stateCode") %>'>
+            </asp:DropDownList><br />
+            <asp:SqlDataSource ID="sdsStates" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
+                SelectCommand="SELECT stateCode, stateName FROM States ORDER BY stateName">
+            </asp:SqlDataSource>
             <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
                 CommandName="Update" Text="Update" />
             &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
@@ -66,8 +75,9 @@
     
     <asp:SqlDataSource ID="sdsProfile" runat="server" 
         ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
-        SelectCommand="SELECT userName, firstName, lastName, middleInitial, gender, convert(varchar,DOB,101) as DOB FROM UserProfile WHERE (userName = @userName)" 
-        UpdateCommand="UPDATE UserProfile SET firstName = @firstName, lastName = @lastName, middleInitial = @middleInitial, gender = @gender, DOB = @DOB WHERE (userName = @userName)">
+        SelectCommand="SELECT dbo.UserProfile.userName, dbo.UserProfile.firstName, dbo.UserProfile.lastName, dbo.UserProfile.middleInitial, dbo.UserProfile.gender, CONVERT (varchar, dbo.UserProfile.DOB, 101) AS DOB, dbo.UserProfile.stateCode, States.stateName FROM dbo.UserProfile LEFT OUTER JOIN States ON dbo.UserProfile.stateCode = States.stateCode WHERE (dbo.UserProfile.userName = @userName)" 
+        
+        UpdateCommand="UPDATE dbo.UserProfile SET firstName = @firstName, lastName = @lastName, middleInitial = @middleInitial, gender = @gender, DOB = @DOB, stateCode = @stateCode WHERE (userName = @userName)">
         <SelectParameters>
             <asp:Parameter Name="userName" />
         </SelectParameters>
@@ -77,6 +87,7 @@
             <asp:Parameter Name="middleInitial" />
             <asp:Parameter Name="gender" />
             <asp:Parameter Name="DOB" />
+            <asp:Parameter Name="stateCode" />
             <asp:Parameter Name="userName" />
         </UpdateParameters>
     </asp:SqlDataSource>

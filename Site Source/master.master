@@ -47,10 +47,12 @@
                 selected: pageIndex
             });
             
-            if (document.getElementByID("divInstructionBlurb").length){
+            if ($("#divInstructionBlurb").length){
             	$("#divInstructionDetails").dialog({
                 autoOpen: false,
                 modal: true,
+                width: 600,
+                height: 600,
                 buttons: {
                 	Close: function (){
                 		$(this).dialog("close");
@@ -71,10 +73,10 @@
     <form id="form1" runat="server">
     <div id="divMaster" class="container">
         <div id="divHeader">
-            <h1>High School Swim On Deck</h1>
+            <h1>High School Swimmers On Deck</h1>
             <h2><asp:Literal ID="litHeader" runat="server"></asp:Literal></h2>
         </div> 
-        <div id="divContent" class="span-18 prepend-3 last">
+        <div id="divContent" class="span-20 prepend-2 last">
         <div id="divMenu">
             <ul>
                 <li>
@@ -84,7 +86,7 @@
                     <a class="menuLink" href="Goals.aspx">User Goals & Performance</a>
                 </li>
                 <li>
-                    <a class="menuLink" href="Results.aspx">Result History</a>
+                    <a class="menuLink" href="Results.aspx">All Results</a>
                 </li>
                 
             </ul>
@@ -93,6 +95,7 @@
         
         </asp:ContentPlaceHolder></div></div>
         </div>
+        <div class="clear">&nbsp;</div>
     </div>
     </form>
 </body>

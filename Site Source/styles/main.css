@@ -9,6 +9,11 @@ h1,h2
     text-align:center;   
 }
 
+#divHeader
+{
+    padding-top: 20px;
+}
+
 #divMaster
 {
       
@@ -25,6 +30,13 @@ h1,h2
 .profileEdit
 {
     width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dCriteria table
+{
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -72,4 +84,10 @@ h1,h2
 .aCenter
 {
     text-align:center;
+}
+
+.centered
+{
+    margin-left: auto;
+    margin-right: auto;
 }

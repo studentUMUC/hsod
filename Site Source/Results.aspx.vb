@@ -10,16 +10,16 @@ Partial Class Results
     End Sub
 
     Protected Sub BindTable()
-        sdsResults.SelectParameters("userName").DefaultValue = User.Identity.Name
+        sdsUserResults.SelectParameters("userName").DefaultValue = User.Identity.Name
         If Request.QueryString.HasKeys Then
             Dim eventCode As String = Request.QueryString("e")
             If Not String.IsNullOrEmpty(eventCode) Then
-                sdsResults.FilterExpression = String.Format("eventCode = '{0}'", eventCode)
+                sdsUserResults.FilterExpression = String.Format("eventCode = '{0}'", eventCode)
                 panFiltered.Visible = True
             End If
 
         End If
-        rptResults.DataSource = sdsResults
+        rptResults.DataSource = sdsUserResults
         rptResults.DataBind()
     End Sub
 
