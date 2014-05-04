@@ -17,11 +17,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="divInstructionBlurb" class="notice">This page lets you update your profile information.<br />
-    Enter your information and click on the "update" link to save your information.  <a id="aMoreInfo" href="#">click for more info</a>
+    <div id="divInstructionBlurb" class="notice">
+        For More Information:  <a id="aMoreInfo" href="#">click here</a>
     </div>
     <div id="divInstructionDetails">
-    
+       <h2>Enter Specific Profile Information.</h2> </p>
+        <h3>Date of birth format is:</p>
+        Month: 05 / Day: 12 / Year: 2010 Example: 05/12/2010 </p>
+        The State refers to where profile user resides/competes.</p>
+        Other sections are self explanatory.</p>
+        To Update, simply fill in new information and click the <b>UPDATE</b> Link.</h3>
     </div>
     <asp:FormView ID="fvProfile" CssClass="profileEdit" runat="server" CellPadding="4" 
         DataKeyNames="userName" DataSourceID="sdsProfile" DefaultMode="Edit" 

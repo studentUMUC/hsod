@@ -22,7 +22,7 @@
         <div id="divHeader">
             <h1>High School Swimmers On Deck</h1>
         </div>
-        <div id="divContent" class="span-18 prepend-3 last">
+        <div id="divContent" class="span-18 prepend-5 last">
         <div class="ui-widget ui-widget-content ui-corner-all aCenter" style="width:600px;">
         <asp:LoginView ID="LoginView1" runat="server">
         <AnonymousTemplate><h2>Welcome!</h2>

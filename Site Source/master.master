@@ -20,6 +20,7 @@
     <script type="text/javascript">
         var pageLinks = new Array(3);
         
+        // helper function for jQuery tab control; gets current page index
         function getCurrentPageIndex() {
             // get current page by looping through
             var pageIndex = 0;
@@ -38,8 +39,10 @@
         $(function () {
             var pageIndex = getCurrentPageIndex();
 
+            // initializes jQuery tab control
             $("#divMenu").tabs({
                 select: function (event, ui) {
+                    // overloads default select function, uses custom link redirect
                     var index = ui.index;
                     window.location = pageLinks[index];
                     return false;
@@ -47,7 +50,12 @@
                 selected: pageIndex
             });
             
-            if ($("#divInstructionBlurb").length){
+            //make any control with the button class into a jQuery button
+            $(".button").button();
+
+            // checks for instruction div
+            if ($("#divInstructionBlurb").length) {
+                // if the div exists, initialize dialog and link trigger
             	$("#divInstructionDetails").dialog({
                 autoOpen: false,
                 modal: true,

@@ -22,17 +22,19 @@ Partial Class _Default
     End Sub
 
 
+    Protected Sub CreateProfile()
+        ' creates a profile record for a new user
 
-
- 
-  
-    Protected Sub CreateUserWizard1_CreatedUser(sender As Object, e As System.EventArgs) Handles CreateUserWizard1.CreatedUser
         ' set profile insert data source parameter to newly created user's name
         sdsProfile.InsertParameters("userName").DefaultValue = CreateUserWizard1.UserName
         ' create profile record
         sdsProfile.Insert()
+    End Sub
 
-
-
+ 
+  
+    Protected Sub CreateUserWizard1_CreatedUser(sender As Object, e As System.EventArgs) Handles CreateUserWizard1.CreatedUser
+        ' we aren't using the built-in ASP.NET profile provider, so call function to create new profile record
+        CreateProfile()
     End Sub
 End Class

@@ -5,7 +5,10 @@
     <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="js/jquery.dataTables.rowGrouping.js" type="text/javascript"></script>
     <script type="text/javascript">
+        
         function initAdd(aType, eCode) {
+            // this function initializes and opens the time (goal/result) entry dialog box
+            
             // parse event code
             var strokeCode = eCode.substr(0,2);
             var distance = eCode.substr(2);
@@ -34,6 +37,7 @@
 
 
         $(function () {
+            // initialize datepicker
             $(".datePicker").datepicker({
                 changeMonth: true,
                 changeYear: true,
@@ -42,13 +46,14 @@
                 minDate: '-20y'
             });
 
-            $(".button").button();
 
+            // handle result add click
             $("#btnAddResult").click(function () {
                 initAdd("result", "BA25y");
                 return false;
             });
 
+            // handle time link click
             $(".aTime").click(function () {
                 var tCode = $(this)[0].id;
                 var eventCode = tCode.substr(1);
@@ -57,6 +62,7 @@
                 return false;
             });
 
+            // initialize jQuery data table plugin
             $("#tblUserGoals").dataTable({
                 "bPaginate": false,
                 "bLengthChange": false,
@@ -69,6 +75,7 @@
                 "sDom": 'lfr<"giveHeight"t>ip'
             }).rowGrouping({ bExpandableGrouping: true });
 
+            // initialize time (goal/result) dialog
             $("#divAdd").dialog({
                 autoOpen: false,
                 modal: true,
@@ -99,17 +106,27 @@
                 }
             });
 
-
+            // Add the dialog form back to the page so ASP.NET will recognize it on postback
             $("#divAdd").parent().appendTo($("form:first"));
         });
         
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="divInstructionBlurb" class="notice">Instruction summary goes here  <a id="aMoreInfo" href="#">click for more info</a>
+    <div id="divInstructionBlurb" class="notice">For More Information:  <a id="aMoreInfo" href="#">click here</a>
     </div>
     <div id="divInstructionDetails">
-    
+    <h2>Add New Event:</h2> </p>
+        Click Add New Event Result:  
+        When dialog window opens choose from the Stroke and Distance Drop down menus.</p>
+        Enter Time as Minute:Second:100ths of Second:  EX 01:12.67</p>
+        Choose Date from calendar select dialog.</p>
+        To create, after information is filled in, click the <b>SUBMIT</b> button.</p>
+                <h2>Add Personal Goal:</h2> </p>
+        Click Current goal link or Add under Goal Time.  
+        When dialog window opens choose from the Stroke and Distance Drop down menus.</p>
+        Enter Time as Minute:Second:100ths of Second:  EX 01:12.67</p>
+        To create or update after information is filled in, click the <b>SUBMIT</b> button.</p>
     </div>
     <input id="btnAddResult" type="button" class="button" value="Add New Event Result" />
     <asp:Repeater ID="rptGoals" runat="server" DataSourceID="sdsGoals">

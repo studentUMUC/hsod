@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://swim.fanguy.org/styles/blueprint/screen.css" type="text/css" />
+
+    <!--[if lt IE 8]>
+  <link rel="stylesheet" href="http://swim.fanguy.org/styles/blueprint/ie.css" type="text/css"  />
+<![endif]-->
+
+    <link rel="stylesheet" href="http://swim.fanguy.org/styles/start/jquery-ui-1.8.9.custom.css" type="text/css" />
+    <link href="http://swim.fanguy.org/styles/main.css" rel="stylesheet" type="text/css" />
+    <script src="http://swim.fanguy.org/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="http://swim.fanguy.org/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#divInstructionDetails").dialog({
+                autoOpen: false,
+                modal: true,
+                width: 600,
+                height: 600,
+                buttons: {
+                    Close: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#aMoreInfo").click(function () {
+                $("#divInstructionDetails").dialog("open");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="divGoalsInstructions" class="notice">
+        For More Information:  <a id="aMoreInfo" href="#">click here</a>
+    </div>
+    <div id="divInstructionDetails">
+        <h2>Add New Event:</h2> </p>
+        Click Add New Event Result:  
+        When dialog window opens choose from the Stroke and Distance Drop down menus.</p>
+        Enter Time as Minute:Second:100ths of Second:  EX 01:12:67</p>
+        Choose Date from calendar select dialog.</p>
+        To create, after information is filled in, click the <b>SUBMIT</b> button.</p>
+                <h2>Add Personal Goal:</h2> </p>
+        Click Current goal link or Add under Goal Time.  
+        When dialog window opens choose from the Stroke and Distance Drop down menus.</p>
+        Enter Time as Minute:Second:100ths of Second:  EX 01:12:67</p>
+        To create or update after information is filled in, click the <b>SUBMIT</b> button.</p>
+    </div>
+</body>
+</html>

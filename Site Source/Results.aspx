@@ -6,6 +6,7 @@
     <script src="js/jquery.dataTables.rowGrouping.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
+            // initialize date picker
             $(".datePicker").datepicker({
                 changeMonth: true,
                 changeYear: true,
@@ -14,8 +15,7 @@
                 minDate: '-20y'
             });
 
-            $(".button").button();
-
+            // initialize datatable
             $("#tblResults").dataTable({
                 "bPaginate": false,
                 "bLengthChange": false,
@@ -30,10 +30,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="divInstructionBlurb" class="notice">Instruction summary goes here  <a id="aMoreInfo" href="#">click for more info</a>
+    <div id="divInstructionBlurb" class="notice">
+        For More Information:  <a id="aMoreInfo" href="#">click here</a>
     </div>
     <div id="divInstructionDetails">
-    
+        <h2>To Display Specific Results:</h2> </p>
+        Select each criteria to be displayed.</p>
+        Use drop down menus for specific result views.
+        Click <b>APPLY FILTER</b> to show requested results.</p>
+        Example:  In order to show all 19 year old swimmers from Wisconsin that competed on May 10, 2013, in the 25 yard backstroke:</p>
+        Event:  BACKSTROKE 25Y</p>  Gender:  Both</p> Age Range:  19   19</p>   State:  Wisconsin</p> Date Range: May 10, 2013  May 10, 2013 
     </div>
     <asp:Panel ID="panCriteria" CssClass="dCriteria aCenter" runat="server">
     <h3>Selection Criteria</h3>
@@ -57,7 +63,7 @@
                 </asp:DropDownList>
             </td>
             <td>
-                <asp:DropDownList ID="ddlAgeMin" runat="server">
+               Min: <asp:DropDownList ID="ddlAgeMin" runat="server">
                     <asp:ListItem>12</asp:ListItem>
                     <asp:ListItem>13</asp:ListItem>
                     <asp:ListItem>14</asp:ListItem>
@@ -69,7 +75,7 @@
                 </asp:DropDownList>
             </td>
             <td>
-                <asp:DropDownList ID="ddlAgeMax" runat="server">
+                Max: <asp:DropDownList ID="ddlAgeMax" runat="server">
                  <asp:ListItem>12</asp:ListItem>
                     <asp:ListItem>13</asp:ListItem>
                     <asp:ListItem>14</asp:ListItem>
@@ -80,7 +86,7 @@
                     <asp:ListItem>19</asp:ListItem>
                 </asp:DropDownList>
             </td>
-            
+                
         </tr>
         <tr>
         <td colspan="2">State</td>
@@ -93,9 +99,9 @@
                 </asp:DropDownList>
             </td>
             <td>
-                <asp:TextBox ID="txtDateMin" CssClass="datePicker" runat="server"></asp:TextBox></td>
+               Min: <asp:TextBox ID="txtDateMin" CssClass="datePicker" runat="server"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtDateMax" CssClass="datePicker" runat="server"></asp:TextBox></td>
+                Max: <asp:TextBox ID="txtDateMax" CssClass="datePicker" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
             <td colspan="4">
@@ -124,8 +130,9 @@
                                         Event Date
                                     </th>
                                     <th>Age</th>
+                                    <th>Gender</th>
                                     <th>
-                                        Event Result Time
+                                       Result Time
                                     </th>
                                     <th>Swimmer</th>
                                     <th>State</th>
@@ -151,6 +158,9 @@
                                 <%#Eval("Age")%>
                             </td>
                             <td>
+                                <%#Eval("Gender")%>
+                            </td>
+                            <td>
                                 <%#Eval("resultTime")%>
                             </td>
                             <td>
@@ -169,7 +179,8 @@
         ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
         
         
-        SelectCommand="SELECT dbo.UserResult.userName, dbo.UserResult.strokeCode + dbo.UserResult.distance AS eventCode, dbo.UserResult.strokeCode, dbo.UserResult.distance, dbo.Distance.iDistance, dbo.Stroke.strokeName, RIGHT (CONVERT (varchar, dbo.UserResult.resultTime, 121), 8) AS resultTime, CONVERT (varchar, dbo.UserResult.resultDate, 101) AS resultDate, LEFT (CONVERT (varchar, DATEDIFF(d, dbo.UserProfile.DOB, dbo.UserResult.resultDate) / 365.25), 2) AS age, States.stateCode, States.stateName, dbo.UserProfile.firstName + ' ' + dbo.UserProfile.lastName AS swimmer FROM dbo.UserResult INNER JOIN dbo.Stroke ON dbo.UserResult.strokeCode = dbo.Stroke.strokeCode INNER JOIN dbo.Distance ON dbo.UserResult.distance = dbo.Distance.distance INNER JOIN dbo.UserProfile ON dbo.UserResult.userName = dbo.UserProfile.userName INNER JOIN States ON dbo.UserProfile.stateCode = States.stateCode WHERE (dbo.UserResult.userName = @userName) ORDER BY resultDate DESC, dbo.Stroke.strokeName, dbo.Distance.iDistance">
+        
+        SelectCommand="SELECT dbo.UserResult.userName, dbo.UserResult.strokeCode + dbo.UserResult.distance AS eventCode, dbo.UserResult.strokeCode, dbo.UserResult.distance, dbo.Distance.iDistance, dbo.Stroke.strokeName, RIGHT (CONVERT (varchar, dbo.UserResult.resultTime, 121), 8) AS resultTime, CONVERT (varchar, dbo.UserResult.resultDate, 101) AS resultDate, LEFT (CONVERT (varchar, DATEDIFF(d, dbo.UserProfile.DOB, dbo.UserResult.resultDate) / 365.25), 2) AS age, States.stateCode, States.stateName, dbo.UserProfile.firstName + ' ' + dbo.UserProfile.lastName AS swimmer, dbo.UserProfile.gender FROM dbo.UserResult INNER JOIN dbo.Stroke ON dbo.UserResult.strokeCode = dbo.Stroke.strokeCode INNER JOIN dbo.Distance ON dbo.UserResult.distance = dbo.Distance.distance INNER JOIN dbo.UserProfile ON dbo.UserResult.userName = dbo.UserProfile.userName INNER JOIN States ON dbo.UserProfile.stateCode = States.stateCode WHERE (dbo.UserResult.userName = @userName) ORDER BY resultDate DESC, dbo.Stroke.strokeName, dbo.Distance.iDistance">
         <SelectParameters>
             <asp:Parameter Name="userName" />
         </SelectParameters>
@@ -177,6 +188,26 @@
     <asp:SqlDataSource ID="sdsEvents" runat="server" 
         ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
         SelectCommand="SELECT dbo.Stroke.strokeName, dbo.Stroke.strokeCode, dbo.Distance.distance, dbo.Distance.iDistance, dbo.Stroke.strokeName + ' - ' + dbo.Distance.distance AS eDisplay, dbo.Stroke.strokeCode + dbo.Distance.distance AS eValue FROM dbo.Distance CROSS JOIN dbo.Stroke ORDER BY dbo.Stroke.strokeName, dbo.Distance.iDistance">
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="sdsAllResults" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
+        SelectCommand="SELECT dbo.UserResult.userName, dbo.UserResult.strokeCode + dbo.UserResult.distance AS eventCode, dbo.UserResult.strokeCode, dbo.UserResult.distance, dbo.Distance.iDistance, dbo.Stroke.strokeName, RIGHT (CONVERT (varchar, dbo.UserResult.resultTime, 121), 8) AS resultTime, CONVERT (varchar, dbo.UserResult.resultDate, 101) AS resultDate, LEFT (CONVERT (varchar, DATEDIFF(d, dbo.UserProfile.DOB, dbo.UserResult.resultDate) / 365.25), 2) AS age, States.stateCode, States.stateName, dbo.UserProfile.firstName + ' ' + dbo.UserProfile.lastName AS swimmer, dbo.UserProfile.gender, CONVERT (varchar, dbo.UserResult.resultDate, 112) AS Expr3, CONVERT (varchar, dbo.UserResult.resultDate, 112) AS Expr2 FROM dbo.UserResult INNER JOIN dbo.Stroke ON dbo.UserResult.strokeCode = dbo.Stroke.strokeCode INNER JOIN dbo.Distance ON dbo.UserResult.distance = dbo.Distance.distance INNER JOIN dbo.UserProfile ON dbo.UserResult.userName = dbo.UserProfile.userName INNER JOIN States ON dbo.UserProfile.stateCode = States.stateCode WHERE ('b' + dbo.UserProfile.gender LIKE '%' + @genderCode + '%') AND (States.stateCode = @stateCode) AND (LEFT (CONVERT (varchar, DATEDIFF(d, dbo.UserProfile.DOB, dbo.UserResult.resultDate) / 365.25), 2) BETWEEN @ageMin AND @ageMax) AND (dbo.UserResult.strokeCode + dbo.UserResult.distance = @eventCode) AND (CONVERT (varchar, dbo.UserResult.resultDate, 112) &gt;= CONVERT (varchar, CONVERT (date, @dateMin), 112)) AND (CONVERT (varchar, dbo.UserResult.resultDate, 112) &lt;= CONVERT (varchar, CONVERT (date, @dateMax), 112)) ORDER BY resultDate DESC, dbo.Stroke.strokeName, dbo.Distance.iDistance">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddlGender" Name="genderCode" 
+                PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="ddlState" Name="stateCode" 
+                PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="ddlAgeMin" Name="ageMin" 
+                PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="ddlAgeMax" Name="ageMax" 
+                PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="ddlEvent" Name="eventCode" 
+                PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="txtDateMin" Name="dateMin" 
+                PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtDateMax" Name="dateMax" 
+                PropertyName="Text" />
+        </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="sdsStates" runat="server" 
         ConnectionString="<%$ ConnectionStrings:SwimConnectionString %>" 
