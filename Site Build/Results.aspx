@@ -1,4 +1,4 @@
-﻿<%@ Page Title="All Results" Language="VB" MasterPageFile="~/master.master" AutoEventWireup="false" CodeFile="Results.aspx.vb" Inherits="Results" %>
+﻿<%@ page title="All Results" language="VB" masterpagefile="~/master.master" autoeventwireup="false" inherits="Results, App_Web_esdf5vyz" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="styles/jquery.dataTables.css" rel="stylesheet" type="text/css" />

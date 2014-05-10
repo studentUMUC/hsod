@@ -1,4 +1,4 @@
-﻿<%@ Page Title="User Goals & Performance" Language="VB" MasterPageFile="~/master.master" AutoEventWireup="false" CodeFile="Goals.aspx.vb" Inherits="Goals" %>
+﻿<%@ page title="User Goals & Performance" language="VB" masterpagefile="~/master.master" autoeventwireup="false" inherits="Goals, App_Web_esdf5vyz" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="styles/jquery.dataTables.css" rel="stylesheet" type="text/css" />

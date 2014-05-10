@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" CodeFile="master.master.vb" Inherits="master" %>
+﻿<%@ master language="VB" inherits="master, App_Web_2afqxaaj" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -98,13 +98,12 @@
     <div id="divMaster" class="container">
         <div id="divHeader">
             <h1>High School Swimmers On Deck</h1>
-            <h2><asp:Literal ID="litHeader" runat="server"></asp:Literal></h2><asp:LoginStatus ID="LoginStatus1" runat="server" />
+            <h2><asp:Literal ID="litHeader" runat="server"></asp:Literal></h2>
         </div> 
         <div id="divContent" class="span-20 prepend-2 last">
         <div id="divMenu">
             <ul>
                 <li>
-                    
                     <a class="menuLink" href="Profile.aspx">User Profile</a>
                 </li>
                 <li>

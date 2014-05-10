@@ -5,6 +5,8 @@ Partial Class master
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             LoadHeader()
+            sdsProfileCheck.SelectParameters("userName").DefaultValue = Page.User.Identity.Name
+            ddlProfileCheck.DataBind()
 
         End If
     End Sub

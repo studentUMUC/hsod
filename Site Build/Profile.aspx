@@ -1,4 +1,4 @@
-﻿<%@ Page Title="User Profile" Language="VB" MasterPageFile="~/master.master" AutoEventWireup="false" CodeFile="Profile.aspx.vb" Inherits="Profile" %>
+﻿<%@ page title="User Profile" language="VB" masterpagefile="~/master.master" autoeventwireup="false" inherits="Profile, App_Web_esdf5vyz" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript">
